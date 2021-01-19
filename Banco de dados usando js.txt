@@ -1,0 +1,40 @@
+BANCO DE DADOS USANDO JAVASCRIPT
+
+https://www.luiztools.com.br/post/como-usar-nodejs-mysql/
+----------------------------------------------------------
+
+1º Parte
+
+npm install -S mysql
+
+2º Parte
+
+const mysql  = require('mysql');
+const connection = mysql.createConnection({
+		host:
+		port:
+		user:
+		password:
+		database:
+	});
+
+
+3º Parte
+
+connection.connect(function(err){
+	if(err) return console.log(err);
+	console.log("conectou");
+	})
+
+
+function addRows(conn){
+	const sql = "insert into clientes (nome,cpf) values ?";
+	const values = [];
+
+	conn.query(sql,[values],function(error,results,fields){
+		
+		if(error) return console.log(error);
+		console.log('adicionou registros');
+		conn.end();
+		});
+}
